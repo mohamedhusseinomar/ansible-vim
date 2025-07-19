@@ -1,0 +1,8 @@
+---
+- name: Install vim based on OS family
+  hosts: all
+  become: yes
+  tasks:
+    - name: Check OS family
+      debug:
+        var: ansible_facts['os_family']

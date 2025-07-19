@@ -1,0 +1,19 @@
+---
+- name: Ensure that a file exist in my home dir
+  hosts: ubuntu_servers
+  tasks:
+  - name: create a file in my home dir
+     ansible.builtin.file:
+      path: ~/file1.txt
+      state: touch
+      mode: '0644'
+- name: add my name to the file
+  hosts: ubuntu_servers
+  tasks:
+   - name: add my name to the file which already exist
+     ansible.builtin.lineinfile:
+      path: ~/file0.txt
+      line: "Mohamed Hussein"
+      create: true
+      mode: '0644'
+

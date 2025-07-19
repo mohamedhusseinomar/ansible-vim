@@ -1,0 +1,16 @@
+---
+- name: Install vim based on OS family
+  hosts: all
+  become: true
+  tasks:
+    - name: Install vim on Ubuntu
+      ansible.builtin.apt:
+        name: vim
+        state: present
+      when: ansible_facts['os_family'] == "Debian"
+
+    - name: Install vim on RedHat
+      ansible.builtin.dnf:
+        name: vim
+        state: present
+      when: ansible_facts['os_family'] == "RedHat"
